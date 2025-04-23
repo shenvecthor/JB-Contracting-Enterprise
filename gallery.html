@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery - JB Contracting Enterprise</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <!-- Lightbox for Gallery -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'jb-yellow': '#F3B21C', 
+            'jb-dark': '#1E1E1E',  
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .page-header {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), url('images/real-estate.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+    .gallery-item {
+      transition: transform 0.3s ease;
+    }
+    .gallery-item:hover {
+      transform: scale(1.03);
+    }
+    
+    /* Custom Lightbox Styling */
+    .lb-data .lb-caption {
+      font-size: 16px;
+      font-weight: bold;
+      color: #F3B21C;
+    }
+    .lb-data .lb-details {
+      width: 100%;
+      text-align: center;
+    }
+  </style>
+</head>
+<body class="font-sans text-jb-dark">
+  <!-- Navigation Bar -->
+  <nav class="bg-white shadow-md fixed w-full z-10">
+    <div class="container mx-auto px-4 md:px-6 lg:px-8">
+      <div class="flex justify-between items-center py-4">
+        <div class="flex items-center">
+          <a href="index.html" class="flex items-center">
+            <img src="images/logo-clean-transparent.png" alt="JB Logo" class="h-12 w-auto mr-3">
+            <div>
+              <span class="text-2xl font-bold text-jb-dark">JB</span>
+              <span class="ml-2 text-xl font-semibold">Contracting Enterprise</span>
+            </div>
+          </a>
+        </div>
+        
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+          <button id="menu-toggle" class="text-jb-dark hover:text-jb-yellow focus:outline-none">
+            <i class="fas fa-bars text-2xl"></i>
+          </button>
+        </div>
+        
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex space-x-8">
+          <a href="index.html" class="text-jb-dark hover:text-jb-yellow hover:border-b-2 hover:border-jb-yellow transition duration-300">Home</a>
+          <a href="about.html" class="text-jb-dark hover:text-jb-yellow hover:border-b-2 hover:border-jb-yellow transition duration-300">About Us</a>
+          <a href="gallery.html" class="text-jb-yellow font-medium border-b-2 border-jb-yellow">Gallery</a>
+          <a href="index.html#contact" class="text-jb-dark hover:text-jb-yellow hover:border-b-2 hover:border-jb-yellow transition duration-300">Contact</a>
+        </div>
+      </div>
+      
+      <!-- Mobile Navigation -->
+      <div id="mobile-menu" class="md:hidden hidden pb-4">
+        <a href="index.html" class="block py-2 px-4 text-jb-dark hover:text-jb-yellow">Home</a>
+        <a href="about.html" class="block py-2 px-4 text-jb-dark hover:text-jb-yellow">About Us</a>
+        <a href="gallery.html" class="block py-2 px-4 text-jb-yellow font-medium">Gallery</a>
+        <a href="index.html#contact" class="block py-2 px-4 text-jb-dark hover:text-jb-yellow">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="page-header py-20 md:py-28 flex items-center justify-center text-white">
+    <div class="container mx-auto px-4 text-center" data-aos="fade-up">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Our Gallery</h1>
+      <p class="text-xl max-w-2xl mx-auto">View our projects, equipment, and available rental properties.</p>
+    </div>
+  </section>
+
+  <!-- Company Info Banner -->
+  <section class="py-8 bg-jb-yellow">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-wrap items-center justify-between">
+        <div class="w-full md:w-auto text-center md:text-left mb-6 md:mb-0" data-aos="fade-right">
+          <h2 class="text-3xl font-bold text-jb-dark">JB Contracting Enterprise</h2>
+          <p class="text-jb-dark/80 text-xl mt-2">130 Market Street, Triumph, ECD</p>
+        </div>
+        <div class="w-full md:w-auto text-center md:text-right" data-aos="fade-left">
+          <p class="text-jb-dark font-semibold text-lg">Director: Mr. Jimmaul Bagot</p>
+          <p class="text-jb-dark/80 text-xl mt-2">Call us today: <span class="font-bold">+592 611-8977</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Navigation Section -->
+  <section class="py-10 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-wrap justify-center gap-4" data-aos="fade-up">
+        <a href="#equipment" class="bg-jb-yellow hover:bg-yellow-600 text-jb-dark font-semibold py-2 px-6 rounded-lg transition duration-300">Equipment</a>
+        <a href="#projects" class="bg-jb-yellow hover:bg-yellow-600 text-jb-dark font-semibold py-2 px-6 rounded-lg transition duration-300">Construction Projects</a>
+        <a href="#electrical" class="bg-jb-yellow hover:bg-yellow-600 text-jb-dark font-semibold py-2 px-6 rounded-lg transition duration-300">Electrical Works</a>
+        <a href="#plumbing" class="bg-jb-yellow hover:bg-yellow-600 text-jb-dark font-semibold py-2 px-6 rounded-lg transition duration-300">Plumbing Services</a>
+        <a href="#transport" class="bg-jb-yellow hover:bg-yellow-600 text-jb-dark font-semibold py-2 px-6 rounded-lg transition duration-300">Transport</a>
+        <a href="#apartments" class="bg-jb-yellow hover:bg-yellow-600 text-jb-dark font-semibold py-2 px-6 rounded-lg transition duration-300">Apartments</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Equipment Gallery Section -->
+  <section id="equipment" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-4 text-jb-dark">Equipment Rental</h2>
+        <p class="text-lg text-gray-700 max-w-2xl mx-auto">Browse our range of quality equipment available for rent.</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Equipment Item 1 -->
+        <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+          <a href="images/excavator.jpg" data-lightbox="equipment" data-title="Excavator">
+            <img src="images/excavator.jpg" alt="Excavator" class="w-full h-64 object-cover">
+          </a>
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-1">Excavator</h3>
+            <p class="text-gray-600">Perfect for digging foundations, trenches, and other excavation work.</p>
+          </div>
+        </div>
+        
+        <!-- Equipment Item 2 -->
+        <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+          <a href="images/concrete-mixer.jpg" data-lightbox="equipment" data-title="Concrete Mixer">
+            <img src="images/concrete-mixer.jpg" alt="Concrete Mixer" class="w-full h-64 object-cover">
+          </a>
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-1">Concrete Mixer</h3>
+            <p class="text-gray-600">Efficient mixing solution for construction projects of all sizes.</p>
+          </div>
+        </div>
+        
+        <!-- Equipment Item 3 -->
+        <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+          <a href="images/jackhammer.jpg" data-lightbox="equipment" data-title="Jackhammer">
+            <img src="images/jackhammer.jpg" alt="Jackhammer" class="w-full h-64 object-cover">
+          </a>
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-1">Jackhammer</h3>
+            <p class="text-gray-600">Heavy-duty equipment for breaking concrete, pavement, and rock.</p>
+          </div>
+        </div>
+        
+        <!-- Equipment Item 4 -->
+        <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="400">
+          <a href="images/generator.png" data-lightbox="equipment" data-title="Generator">
+            <img src="images/generator.png" alt="Generator" class="w-full h-64 object-cover">
+          </a>
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-1">Generator</h3>
+            <p class="text-gray-600">Reliable power solutions for construction sites and events.</p>
+          </div>
+        </div>
+        
+        <!-- Equipment Item 5 -->
+        <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="500">
+          <a href="images/power-tools.webp" data-lightbox="equipment" data-title="Power Tools">
+            <img src="images/power-tools.webp" alt="Power Tools" class="w-full h-64 object-cover">
+          </a>
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-1">Power Tools</h3>
+            <p class="text-gray-600">Wide range of drills, saws, and specialized tools for any job.</p>
+          </div>
+        </div>
+        
+        <!-- Equipment Item 6 -->
+        <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="600">
+          <a href="images/scaffold.jpg" data-lightbox="equipment" data-title="Scaffolding">
+            <img src="images/scaffold.jpg" alt="Scaffolding" class="w-full h-64 object-cover">
+          </a>
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-1">Scaffolding</h3>
+            <p class="text-gray-600">Safe and stable platforms for working at height.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Construction Projects Gallery Section -->
+  <section id="projects" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-4 text-jb-dark">Construction Projects</h2>
+        <p class="text-lg text-gray-700 max-w-2xl mx-auto">View some of our completed construction and civil works projects.</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Project 1 -->
+        <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+          <a href="images/residential-home.jpg" data-lightbox="projects" data-title="Residential Home Construction">
+            <img src="images/residential-home.jpg" alt="Residential Project" class="w-full h-64 object-cover">
+          </a>
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-1">Residential Construction</h3>
+            <p class="text-gray-600">Complete home building with modern design and quality finishes.</p>
+          </div>
+        </div>
+        
+        <!-- Project 2 -->
+        <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+          <a href="images/commercial-renovation.jpg" data-lightbox="projects" data-title="Commercial Building Renovation">
+            <img src="images/commercial-renovation.jpg" alt="Commercial Project" class="w-full h-64 object-cover">
+          </a>
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-1">Commercial Renovation</h3>
+            <p class="text-gray-600">Office building renovation with modern fixtures and systems.</p>
+          </div>
+        </div>
+        
+        <!-- Project 3 -->
+        <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+          <a href="images/land-development.jpg" data-lightbox="projects" data-title="Land Development Project">
+            <img src="images/land-development.jpg" alt="Land Development" class="w-full h-64 object-cover">
+          </a>
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-1">Land Development</h3>
+            <p class="text-gray-600">Site preparation and infrastructure for new construction.</p>
+          </div>
+        </div>
+        
+        <!-- Project 4 -->
+        <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="400">
+          <a href="images/foundation-work.jpg" data-lightbox="projects" data-title="Concrete Foundation Work">
+            <img src="images/foundation-work.jpg" alt="Foundation Work" class="w-full h-64 object-cover">
+          </a>
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-1">Foundation Work</h3>
+            <p class="text-gray-600">Solid concrete foundations for residential and commercial buildings.</p>
+          </div>
+        </div>
+        
+        <!-- Project 5 -->
+        <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="500">
+          <a href="images/road-construction.jpg" data-lightbox="projects" data-title="Road Construction">
+            <img src="images/road-construction.jpg" alt="Road Construction" class="w-full h-64 object-cover">
+          </a>
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-1">Road Construction</h3>
+            <p class="text-gray-600">Durable and well-engineered road infrastructure projects.</p>
+          </div>
+        </div>
+        
+        <!-- Project 6 -->
+        <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="600">
+          <a href="images/home-addition.jpg" data-lightbox="projects" data-title="Home Addition Project">
+            <img src="images/home-addition.jpg" alt="Home Addition" class="w-full h-64 object-cover">
+          </a>
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-1">Home Additions</h3>
+            <p class="text-gray-600">Quality expansions and renovations to existing homes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Electrical Works Gallery Section -->
+  <section id="electrical" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-4 text-jb-dark">Electrical Works</h2>
+        <p class="text-lg text-gray-700 max-w-2xl mx-auto">Professional electrical installations, repairs, and maintenance services.</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Electrical Service 1 -->
+        <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+          <a href="images/home-electrical.jpg" data-lightbox="electrical" data-title="Residential Electrical Installation">
+            <img src="images/home-electrical.jpg" alt="Residential Electrical" class="w-full h-64 object-cover">
+          </a>
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-1">Residential Installations</h3>
+            <p class="text-gray-600">Complete wiring and electrical systems for new homes.</p>
+          </div>
+        </div>
+        
+        <!-- Electrical Service 2 -->
+        <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+          <a href="images/commercial-electrical.webp" data-lightbox="electrical" data-title="Commercial Electrical Systems">
+            <img src="images/commercial-electrical.webp" alt="Commercial Electrical" class="w-full h-64 object-cover">
+          </a>
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-1">Commercial Systems</h3>
+            <p class="text-gray-600">Robust electrical solutions for business environments.</p>
+          </div>
+        </div>
+        
+        <!-- Electrical Service 3 -->
+        <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+          <a href="images/lighting-solutions.jpg" data-lightbox="electrical" data-title="Lighting Installation">
+            <img src="images/lighting-solutions.jpg" alt="Lighting Installation" class="w-full h-64 object-cover">
+          </a>
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-1">Lighting Solutions</h3>
+            <p class="text-gray-600">Modern lighting designs for indoor and outdoor spaces.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Plumbing Services Gallery Section -->
+  <section id="plumbing" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-4 text-jb-dark">Plumbing Services</h2>
+        <p class="text-lg text-gray-700 max-w-2xl mx-auto">Quality plumbing installation, repairs, and maintenance for all needs.</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Plumbing Service 1 -->
+        <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+          <a href="images/bathroom-plumbing.jpg" data-lightbox="plumbing" data-title="Bathroom Plumbing Installation">
+            <img src="images/bathroom-plumbing.jpg" alt="Bathroom Plumbing" class="w-full h-64 object-cover">
+          </a>
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-1">Bathroom Installations</h3>
+            <p class="text-gray-600">Complete plumbing solutions for new and renovated bathrooms.</p>
+          </div>
+        </div>
+        
+        <!-- Plumbing Service 2 -->
+        <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+          <a href="images/kitchen-plumbing.webp" data-lightbox="plumbing" data-title="Kitchen Plumbing Systems">
+            <img src="images/kitchen-plumbing.webp" alt="Kitchen Plumbing" class="w-full h-64 object-cover">
+          </a>
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-1">Kitchen Systems</h3>
+            <p class="text-gray-600">Efficient plumbing installations for kitchen renovations.</p>
+          </div>
+        </div>
+        
+        <!-- Plumbing Service 3 -->
+        <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+          <a href="images/water-heating.jpg" data-lightbox="plumbing" data-title="Water Heater Installation">
+            <img src="images/water-heating.jpg" alt="Water Heater" class="w-full h-64 object-cover">
+          </a>
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-1">Water Heater Services</h3>
+            <p class="text-gray-600">Installation and repair of water heating systems.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Transport Services Gallery Section -->
+  <section id="transport" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-4 text-jb-dark">Transport Services</h2>
+        <p class="text-lg text-gray-700 max-w-2xl mx-auto">Reliable transportation solutions for materials, equipment, and goods.</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Transport Service 1 -->
+        <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+          <a href="images/dump-truck.jpg" data-lightbox="transport" data-title="Dump Truck">
+            <img src="images/dump-truck.jpg" alt="Dump Truck" class="w-full h-64 object-cover">
+          </a>
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-1">Dump Trucks</h3>
+            <p class="text-gray-600">For transporting construction materials and debris.</p>
+          </div>
+        </div>
+        
+        <!-- Transport Service 2 -->
+        <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+          <a href="images/flatbed-truck.jpg" data-lightbox="transport" data-title="Flatbed Truck">
+            <img src="images/flatbed-truck.jpg" alt="Flatbed Truck" class="w-full h-64 object-cover">
+          </a>
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-1">Flatbed Trucks</h3>
+            <p class="text-gray-600">Ideal for transporting equipment and building materials.</p>
+          </div>
+        </div>
+        
+        <!-- Transport Service 3 -->
+        <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+          <a href="images/equipment-truck.jpg" data-lightbox="transport" data-title="Equipment Transport">
+            <img src="images/equipment-truck.jpg" alt="Equipment Transport" class="w-full h-64 object-cover">
+          </a>
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-1">Equipment Transport</h3>
+            <p class="text-gray-600">Safe and secure transportation of heavy machinery.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Apartment Rentals Gallery Section -->
+  <section id="apartments" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-4 text-jb-dark">Apartment Rentals</h2>
+        <p class="text-lg text-gray-700 max-w-2xl mx-auto">Discover our comfortable and well-maintained living spaces available for rent.</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Apartment 1 -->
+        <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+          <a href="images/2-bedroom-apt.jpg" data-lightbox="apartments" data-title="2 Bedroom Apartment - Triumph">
+            <img src="images/2-bedroom-apt.jpg" alt="2 Bedroom Apartment" class="w-full h-64 object-cover">
+          </a>
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-1">2 Bedroom Apartment</h3>
+            <p class="text-gray-600 mb-2">Located in Triumph, ECD. Modern amenities included.</p>
+            <p class="text-jb-yellow font-bold">Contact for pricing</p>
+          </div>
+        </div>
+        
+        <!-- Apartment 2 -->
+        <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+          <a href="images/1-bedroomstudio-apt.jpg" data-lightbox="apartments" data-title="1 Bedroom Studio - Triumph">
+            <img src="images/1-bedroomstudio-apt.jpg" alt="1 Bedroom Studio" class="w-full h-64 object-cover">
+          </a>
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-1">1 Bedroom Studio</h3>
+            <p class="text-gray-600 mb-2">Cozy and efficient space with all necessities included.</p>
+            <p class="text-jb-yellow font-bold">Contact for pricing</p>
+          </div>
+        </div>
+        
+        <!-- Apartment 3 -->
+        <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+          <a href="images/3-bedroom-apt.jpg" data-lightbox="apartments" data-title="3 Bedroom Apartment - BV">
+            <img src="images/3-bedroom-apt.jpg" alt="3 Bedroom Apartment" class="w-full h-64 object-cover">
+          </a>
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-1">3 Bedroom Apartment</h3>
+            <p class="text-gray-600 mb-2">Spacious family apartment in BV with modern finishes.</p>
+            <p class="text-jb-yellow font-bold">Contact for pricing</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center mt-10" data-aos="fade-up">
+        <a href="index.html#contact" class="inline-block bg-jb-yellow hover:bg-yellow-600 text-jb-dark font-semibold py-3 px-8 rounded-lg transition duration-300">Inquire About Availability</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Project Showcase -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-4 text-jb-dark">Featured Project Gallery</h2>
+        <p class="text-lg text-gray-700 max-w-2xl mx-auto">Take a closer look at one of our recent comprehensive projects.</p>
+      </div>
+      
+      <div class="max-w-5xl mx-auto">
+        <!-- Project Description -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-8" data-aos="fade-up">
+          <div class="md:flex">
+            <div class="md:w-1/2">
+              <img src="images/residential-construction-project.jpg" alt="Featured Project" class="w-full h-full object-cover">
+            </div>
+            <div class="md:w-1/2 p-6 md:p-8">
+              <h3 class="text-2xl font-bold mb-3 text-jb-dark">Residential Construction Project</h3>
+              <p class="text-gray-700 mb-4">This comprehensive project demonstrates our full range of services, from the initial foundation work to the final electrical and plumbing installations.</p>
+              <ul class="space-y-2 mb-6">
+                <li class="flex items-start">
+                  <span class="text-jb-yellow mr-3"><i class="fas fa-check-circle"></i></span>
+                  <span>Complete foundation and structural work</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-jb-yellow mr-3"><i class="fas fa-check-circle"></i></span>
+                  <span>Full electrical installation to code</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-jb-yellow mr-3"><i class="fas fa-check-circle"></i></span>
+                  <span>Modern plumbing systems throughout</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-jb-yellow mr-3"><i class="fas fa-check-circle"></i></span>
+                  <span>Interior and exterior finishing</span>
+                </li>
+              </ul>
+              <p class="text-gray-700">Client: Private Homeowner<br>Location: Triumph, ECD<br>Completion: 2023</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner Section -->
+  <section class="py-16 bg-jb-dark text-white">
+    <div class="container mx-auto px-4 text-center" data-aos="fade-up">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Get Started?</h2>
+      <p class="text-xl mb-8 max-w-3xl mx-auto">Contact us today to discuss your equipment rental needs, contracting projects, or apartment inquiries.</p>
+      <a href="index.html#contact" class="inline-block bg-jb-yellow text-jb-dark font-semibold py-3 px-8 rounded-lg transition duration-300 hover:bg-yellow-600 transform hover:scale-105">Contact Us Now</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-jb-dark text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <div>
+          <div class="flex items-center mb-4">
+            <img src="images/logo-yellow.png" alt="JB Logo" class="h-10 w-auto mr-3">
+            <h3 class="text-xl font-bold">JB Contracting Enterprise</h3>
+          </div>
+          <p class="text-gray-400 mb-4">Your trusted partner for equipment rental, contracting services, and apartment rentals in Guyana since 2021.</p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-jb-yellow transition duration-300">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-jb-yellow transition duration-300">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.tiktok.com/@jimmaulbagot" class="text-gray-400 hover:text-jb-yellow transition duration-300">
+              <i class="fab fa-tiktok"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a href="index.html" class="text-gray-400 hover:text-jb-yellow transition duration-300">Home</a></li>
+            <li><a href="about.html" class="text-gray-400 hover:text-jb-yellow transition duration-300">About Us</a></li>
+            <li><a href="gallery.html" class="text-gray-400 hover:text-jb-yellow transition duration-300">Gallery</a></li>
+            <li><a href="index.html#contact" class="text-gray-400 hover:text-jb-yellow transition duration-300">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-bold mb-4">Contact Information</h3>
+          <ul class="space-y-3 text-gray-400">
+            <li class="flex items-start">
+              <i class="fas fa-map-marker-alt mt-1 mr-3 text-jb-yellow"></i>
+              <span>130 Market Street, Triumph, ECD</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-phone mt-1 mr-3 text-jb-yellow"></i>
+              <span>+592 611-8977</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-envelope mt-1 mr-3 text-jb-yellow"></i>
+              <span>jbcontractingenterprise@gmail.com</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 pt-6 text-center">
+        <p class="text-gray-500">&copy; 2025 JB Contracting Enterprise. All rights reserved.</p>
+        <p class="text-gray-600 mt-2 text-sm">Equipment Rental · Electrical · Civil Works · Plumbing · Transport</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Initialize AOS Animation
+    document.addEventListener('DOMContentLoaded', function() {
+      AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true
+      });
+      
+      // Mobile Menu Toggle
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      menuToggle.addEventListener('click', function() {
+        mobileMenu.classList.toggle('hidden');
+      });
+      
+      // Initialize Lightbox
+      lightbox.option({
+        'resizeDuration': 200,
+        'wrapAround': true,
+        'disableScrolling': true,
+        'fadeDuration': 300,
+        'imageFadeDuration': 300,
+        'alwaysShowNavOnTouchDevices': true
+      });
+      
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            window.scrollTo({
+              top: target.offsetTop - 80,
+              behavior: 'smooth'
+            });
+            
+            // Close mobile menu if open
+            if (!mobileMenu.classList.contains('hidden')) {
+              mobileMenu.classList.add('hidden');
+            }
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
